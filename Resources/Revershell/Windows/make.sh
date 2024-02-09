@@ -1,0 +1,1 @@
+pyarmor gen rs.py
