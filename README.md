@@ -6,16 +6,10 @@
 
 ## Estructura de directorios
 
-* Academy
-* Labs
-  * Starting Point
-  * Machines
-  * Challenges
-  * Sherlocks
-  * Pro Labs
-  * Advanced Labs
-    * Fortress
-    * Endgames
-    * Battlegrounds
-* Business
-* CTF
+* HTB
+  * Academy
+  * Labs
+  * Business
+  * CTF
+* Resources
+  * Revershell
