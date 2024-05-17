@@ -1,4 +1,0 @@
-# Ignore all files in the Revershell directory except the .py files
-Resources/Revershell/Windows/*
-!Resources/Revershell/Windows/*.py
-
